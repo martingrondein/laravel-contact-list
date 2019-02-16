@@ -18,7 +18,7 @@ class ContactController extends Controller
         $contact = Contact::all();
         $city = City::all();
 
-        return view('index', compact('contact'));
+        return view('contact.index', compact('contact'));
     }
 
     /**
@@ -28,7 +28,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('contact.create');
     }
 
     /**
@@ -78,7 +78,7 @@ class ContactController extends Controller
     {
         $contact = Contact::find($id);
 
-        return view('edit', compact('contact'));
+        return view('contact.edit', compact('contact'));
     }
 
     /**
