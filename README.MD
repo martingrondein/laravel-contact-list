@@ -1,6 +1,10 @@
 # Contactor
 
-by Martin Grondein
+## About
+
+A practice project by Martin Grondein.
+
+## Purpose
 
 A really simple open source contact management system built with Laravel. Manage your contacts in a simple, custom made system.
 
