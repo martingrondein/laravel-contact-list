@@ -23,7 +23,7 @@
     @yield('content')
   </div>
   <nav class="navbar navbar-expand-lg fixed-bottom navbar-dark bg-dark">
-      <span class="navbar-text text-muted">Version 0.0.2</span>
+      <span class="navbar-text text-muted">Version 0.0.3</span>
   </nav>
   <script src="{{ asset('js/app.js') }}" type="text/js"></script>
 </body>
