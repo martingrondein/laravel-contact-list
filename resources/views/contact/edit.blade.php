@@ -32,28 +32,35 @@
               @csrf
               <label for="name">Last Name:</label>
               <input type="text" class="form-control" name="last_name" value={{ $contact->last_name }}>
-          </div>          
+          </div>
 
           <div class="form-group">
               @csrf
-              <label for="name">Email:</label>
+              <label for="name">Email Address:</label>
               <input type="text" class="form-control" name="email" value={{ $contact->email }}>
           </div>
 
           <div class="form-group">
               @csrf
-              <label for="name">Cellphone:</label>
+              <label for="name">Cellphone Number:</label>
               <input type="text" class="form-control" name="cell_phone" value={{ $contact->cell_phone }}>
           </div>
 
           <div class="form-group">
               @csrf
               <label for="name">City:</label>
-              <!-- This should be a drop down listing the cities -->
-              <input type="text" class="form-control" name="city" value={{ $contact->city }} />              
+              <select name="city" class="form-control">
+                {{-- Loop through the cities list model  --}}
+                @foreach($city as $cities)
+                  {{-- Render the list, selecting the user's selected city --}}
+                  <option value="{{ $cities->id}}" {{ $contact->city == $cities->id ? 'selected="selected"' : '' }}>{{ $cities->title  }}</option>
+                  @endforeach
+                </select>
           </div>
-          
-          <button type="submit" class="btn btn-primary">Update</button>
+
+          <button type="submit" class="btn btn-primary">Save & Close</button>
+          <a href="/contact" class="btn btn-secondary">Cancel</a>
+          <button type="reset" class="btn btn-tertiary">Restore Defaults</button>
       </form>
   </div>
 </div>

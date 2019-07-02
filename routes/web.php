@@ -11,9 +11,12 @@
 |
 */
 
+// Basic routing
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Routing via controllers
 Route::resource('contact', 'ContactController');
+
 Route::resource('city', 'CityController');

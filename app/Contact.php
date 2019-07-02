@@ -5,8 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Contact extends Model
-{   
-    // Define singlar
+{
     public $table = "contact";
 
     protected $fillable = [
@@ -16,4 +15,9 @@ class Contact extends Model
         'email',
         'city'
       ];
+
+      public function contact() {
+        return $this->hasMany(Contact::class);
+      }
+
 }

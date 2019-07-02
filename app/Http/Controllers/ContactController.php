@@ -18,7 +18,7 @@ class ContactController extends Controller
         $contact = Contact::all();
         $city = City::all();
 
-        return view('contact.index', compact('contact'));
+        return view('contact.index', compact('contact','city'));
     }
 
     /**
@@ -77,8 +77,9 @@ class ContactController extends Controller
     public function edit($id)
     {
         $contact = Contact::find($id);
+        $city = City::all();
 
-        return view('contact.edit', compact('contact'));
+        return view('contact.edit', compact('contact','city'));
     }
 
     /**
@@ -89,15 +90,15 @@ class ContactController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {        
+    {
         $request->validate([
             'first_name'=>'required',
             'last_name'=> 'required',
             'cell_phone' => 'required|integer',
             'email' => 'required',
             'city' => 'required'
-          ]);       
-    
+          ]);
+
           $contact = Contact::find($id);
           $contact->first_name = $request->get('first_name');
           $contact->last_name = $request->get('last_name');
@@ -105,7 +106,7 @@ class ContactController extends Controller
           $contact->email = $request->get('email');
           $contact->city = $request->get('city');
           $contact->save();
-    
+
           return redirect('/contact')->with('success', 'Contact information has been updated');
     }
 
@@ -119,7 +120,7 @@ class ContactController extends Controller
     {
         $contact = Contact::find($id);
         $contact->delete();
-   
+
         return redirect('/contact')->with('success', 'Contact has been deleted Successfully!');
     }
 }

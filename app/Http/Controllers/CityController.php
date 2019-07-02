@@ -13,7 +13,7 @@ class CityController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {        
+    {
         $city = City::all();
 
         return view('city.index', compact('city'));
@@ -26,7 +26,7 @@ class CityController extends Controller
      */
     public function create()
     {
-        //
+        return view('city.create');
     }
 
     /**
@@ -37,7 +37,14 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title'=>'required'
+          ]);
+        $city = new City([
+            'title' => $request->get('title')
+          ]);
+        $city->save();
+        return redirect('/city')->with('success', 'City has been added!');
     }
 
     /**
@@ -59,7 +66,9 @@ class CityController extends Controller
      */
     public function edit($id)
     {
-        //
+        $city = City::find($id);
+
+        return view('city.edit', compact('city'));
     }
 
     /**
@@ -71,7 +80,16 @@ class CityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title'=>'required'
+        ]);
+
+        $city = City::find($id);
+        $city->title = $request->get('title');
+
+        $city->save();
+
+        return redirect('/city')->with('success', 'City information has been updated');
     }
 
     /**
@@ -82,6 +100,9 @@ class CityController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $city = City::find($id);
+        $city->delete();
+
+        return redirect('/city')->with('success', 'City has been deleted Successfully!');
     }
 }
