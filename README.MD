@@ -38,5 +38,5 @@ cd laravel-contact-list
 Assuming your .env file is correctly configured, the below will setup your database tables:
 
 ``` php
-php artisan make:migration
+php artisan migrate
 ```
