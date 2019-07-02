@@ -8,11 +8,26 @@
   }
 </style>
 <div class="uper">
+
+  <h1>Manage Contacts</h1>
+
+  <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page">Contacts</li>
+        <li class="breadcrumb-item active" aria-current="page">List</li>
+      </ol>
+  </nav>
+
+  <div class="btn-group" role="group">
+    <a class="btn btn-primary" href="{{ route('contact.create')}}" class="btn btn-primary">Add Contact</a>
+  </div>
+
   @if(session()->get('success'))
     <div class="alert alert-success">
       {{ session()->get('success') }}
     </div><br />
   @endif
+
   @if ($errors->any())
   <div class="alert alert-danger">
     <ul>
@@ -22,8 +37,11 @@
     </ul>
   </div><br />
   @endif
-  <a href="{{ route('contact.create')}}" class="btn btn-primary">+ Add Contact</a>
-  <br/><br/>
+
+  <div class="float-right">
+      <span class="badge badge-secondary">Results: {{ $contactCount }}</span>
+  </div>
+
   <table class="table table-striped">
     <thead>
         <tr>
@@ -58,5 +76,10 @@
         @endforeach
     </tbody>
   </table>
+
+  <div class="float-right">
+      <span class="badge badge-secondary">Results: {{ $contactCount }}</span>
+  </div>
+
 <div>
 @endsection

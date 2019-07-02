@@ -6,9 +6,21 @@
     margin-top: 40px;
   }
 </style>
-<div class="card uper">
+
+<div class="uper">
+<h1>Edit Contact</h1>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item" aria-current="page">Contacts</li>
+      <li class="breadcrumb-item" aria-current="page">List</li>
+      <li class="breadcrumb-item active" aria-current="page">Edit</li>
+    </ol>
+</nav>
+
+<div class="card">
   <div class="card-header">
-    Add Contact
+    Editing ID: {{ $contact->id }}
   </div>
   <div class="card-body">
     @if ($errors->any())
@@ -63,5 +75,6 @@
           <button type="reset" class="btn btn-tertiary">Restore Defaults</button>
       </form>
   </div>
+</div>
 </div>
 @endsection

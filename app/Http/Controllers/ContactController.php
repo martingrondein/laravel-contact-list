@@ -17,8 +17,9 @@ class ContactController extends Controller
     {
         $contact = Contact::all();
         $city = City::all();
+        $contactCount = Contact::count(); // Count contacts
 
-        return view('contact.index', compact('contact','city'));
+        return view('contact.index', compact('contact','city','contactCount'));
     }
 
     /**
@@ -28,7 +29,8 @@ class ContactController extends Controller
      */
     public function create()
     {
-        return view('contact.create');
+        $city = City::all();
+        return view('contact.create', compact('city'));
     }
 
     /**
